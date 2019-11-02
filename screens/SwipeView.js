@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
     },
     clubName: {
         textAlign: 'left',
+     
         textDecorationLine: "underline",
         fontWeight: 'bold'
     },
     mission: {
         textAlign: 'center',
+    
         fontStyle: 'italic',
         paddingTop: '10%'
     },

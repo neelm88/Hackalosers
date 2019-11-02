@@ -38,7 +38,7 @@ const items = [
     name: 'Technology',
   },];
 
-export default class App extends Component {
+export default class Interests extends Component {
 
     constructor(props) {
         super(props);
@@ -81,7 +81,7 @@ export default class App extends Component {
             <View style={{position:'absolute',bottom:70, marginLeft: '30%'}}>
             <Button 
                 title="Match Me &#8594;"
-                onPress={() => {this.props.navigation.navigate('SwipeView')}}
+                onPress={() => {this.props.navigation.navigate('DisplayMatches')}}
                 />
                 </View>
         </View>

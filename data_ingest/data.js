@@ -8,7 +8,7 @@ export default[
                 "Awareness/Activism",
                 "Community Service/Service Learning|Special Interest|"
             ],
-            "/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0"
+            "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0"
         ]},{
         "1girl": [
             "To provide girls everywhere the opportunity to develop the skills and confidence they need to lead fulfilling lives and become successful le...",

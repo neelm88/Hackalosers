@@ -59,6 +59,8 @@ export default class Swipe extends React.Component {
         return <View>{this.props.renderCards(item)}</View>;
     };
 
+    
+
     // _swipeTriggered = (e) => {
     //     e.preventDefault();
     //     e.stopPropagation();
