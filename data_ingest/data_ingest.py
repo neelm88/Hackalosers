@@ -1,4 +1,4 @@
-# Initial data ingest for 
+# Initial data ingest for clubs
 
 import requests
 from bs4 import BeautifulSoup
@@ -27,6 +27,7 @@ for club_node in clubs_tags:
         # add club info
         if name not in clubs:
             clubs[name] = [mission, [val.strip(' \\u\t\n\r') for val in affiliations], link]
+                #mission statement, affilliations, link
         
 with open("data_ingest/club_data.json", 'w+') as json_cache:
     json.dump(clubs, json_cache, indent=4, sort_keys=True)
