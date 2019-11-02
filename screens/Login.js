@@ -17,35 +17,32 @@ export default class Login extends React.Component {
     }
 
     render(){
-        console.log(this.username);
         return (
-
             <View style={style_login.container}>
                 <Text style = {style_login.signIn}> Sign In</Text>
                 <TextInput style = {style_login.input}
                 placeholder="Username"
                 onChangeText = {this.storeUsername}
-                value={this.state.username}
-            
+                value={this.state.username}   
                 />
-
                 <TextInput  secureTextEntry={true}  style = {style_login.input}
                 placeholder="Password"
                 onChangeText = {this.storePassword}
                 value={this.state.password}
-                />
-               
-                
-               <Button color = "black"
+                />           
+                <Button color = "black"
                 title="Login"
-
                 />
-
                 <Button 
                 title="Forgot Password"
                 onPress={() => {this.props.navigation.navigate('Interests')}}
+                    title="Forgot Password"
                 />
-         
+                <Button
+                    title="Sign Up"
+                    color="#f194ff"
+                    onPress={() => {this.props.navigation.navigate('UserPreferences')}}
+                />
             </View>
         )
         

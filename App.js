@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './screens/Login.js';
 import Interests from './screens/Interests.js';
+import UserPreferences from './screens/UserPreferences.js';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -37,12 +38,16 @@ class Loader extends React.Component{
 
 const AppNavigator = createStackNavigator({
   Login: {
-      screen: Login ,
+      screen: Login,
       navigationOptions : {header: null}
   },
   Interests: {
     screen: Interests ,
     navigationOptions : {header: null}
+  },
+  UserPreferences: {
+    screen: UserPreferences,
+    navigationOptions : {header: null}    
   }
   
 }, {initialRouteName: "Login",
