@@ -20,10 +20,11 @@ function Separator() {
 export default class Alumni extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  school: "",
+        this.state = {  school: '',
                         first_name: '',
                         last_name: '',
-                        date: '2019'};
+                        date: '2019',
+                        gender: ''};
     }
   componentDidMount() {
  
@@ -45,10 +46,25 @@ export default class Alumni extends React.Component {
                 onChangeText={(last_name) => this.setState({last_name})}
                 value={this.state.last_name}
             />
+            <Text>Gender: </Text>
+            <Picker
+                style={{height: 132}} itemStyle={{height: 132}}
+                placeholder="Gender"
+                mode= 'dropdown'
+                selectedValue={this.state.gender}
+                onValueChange={(itemValue) =>
+                    this.setState({gender: itemValue})
+                  }
+                >
+                <Picker.Item label = "Female" value = "Female" />
+                <Picker.Item label = "Male" value = "Male" />
+                <Picker.Item label = "Other" value = "Other" />
+            </Picker>
             <Text>Select Your School: </Text>
             <Picker
-                style={signin_style.picker}
-                placeholder="Pick School"
+                style={{height: 132}} itemStyle={{height: 132}}
+                placeholder="School"
+                mode= 'dropdown'
                 selectedValue={this.state.school}
                 onValueChange={(itemValue) =>
                     this.setState({school: itemValue})
@@ -59,10 +75,10 @@ export default class Alumni extends React.Component {
                 <Picker.Item label = "Other School" value = "Other School2" />
             </Picker>
             <DatePicker style={{width: 200}}
-                        display="spinner"
                         date={this.state.date}
                         mode="date"
                         format="YYYY"
+                        showIcon="true"
                         placeholder="Select Date"
                         minDate="1950"
                         maxDate="2050"
