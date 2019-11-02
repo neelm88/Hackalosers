@@ -42,6 +42,10 @@ const AppNavigator = createStackNavigator({
       screen: Login,
       navigationOptions : {header: null}
   },
+  SwipeView: {
+      screen: SwipeView,
+      navigationOptions : {header: null}
+  },
   Interests: {
     screen: Interests ,
     navigationOptions : {header: null}

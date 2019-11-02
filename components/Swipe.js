@@ -1,41 +1,86 @@
 import React from 'react';
 import { StyleSheet, Text, View ,Image} from 'react-native';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import { Card } from 'react-native-elements';
 import TestData from '../data_ingest/data';
 import Images from "../constants/Images";
 
 export default class Swipe extends React.Component {
     constructor(props) {
-            super(props);
-            this._panResponder = PanResponder.create({
-                onStartShouldSetPanResponder: (evt, gestureState) => true,
-                onPanResponderMove: (evt, gestureState) => {
-                    this.position.setValue({ x: gesture.dx, y: gesture.dy });
-                    // The most recent move distance is gestureState.move{X,Y}
-                    // The accumulated gesture distance since becoming responder is
-                    // gestureState.d{x,y}
-                },
-                onPanResponderRelease: (evt, gestureState) => {
-                    // The user has released all touches while this view is the
-                    // responder. This typically means a gesture has succeeded
-                },
-            });
+        super(props);
+        this.state = {
+            myText: '',
+            gestureName: 'none',
+            backgroundColor: '#fff',
+            yes: 0,
+            no: 0
         };
+    }
+
+    onSwipeUp = (gestureState) => {
+        this.setState({myText: 'You swiped up!'});
+    }
+    
+    onSwipeDown = (gestureState) => {
+        this.setState({myText: 'You swiped down!'});
+    }
+    
+    onSwipeLeft = (gestureState) => {
+        this.setState({myText: 'You swiped left!'});
+    }
+    
+    onSwipeRight = (gestureState) => {
+        this.setState({myText: 'You swiped right!'});
+    }
+    
+    onSwipe = (gestureName, gestureState) => {
+        const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
+        this.setState({gestureName: gestureName});
+        switch (gestureName) {
+        case SWIPE_UP:
+            this.setState({backgroundColor: 'red'});
+            break;
+        case SWIPE_DOWN:
+            this.setState({backgroundColor: 'green'});
+            break;
+        case SWIPE_LEFT:
+            this.setState({backgroundColor: 'blue'});
+            break;
+        case SWIPE_RIGHT:
+            this.setState({backgroundColor: 'yellow'});
+            break;
+        }
+    }
 
     renderCardItem = (item) => {
-        console.log(this.props.data.length)
         if (!this.props.data.length) {
             return this.props.renderNoMoreCards();
         } 
-        return (this.props.renderCards(item));
+        return <View>{this.props.renderCards(item)}</View>;
     };
+
+    // _swipeTriggered = (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // }
 
     renderCards = () => {
         return (this.props.data.map(this.renderCardItem));
     };
 
     render() {
-        return <View>{this.renderCards()}</View>;
+        return(
+        <View>
+            <GestureRecognizer
+                onSwipe={this.onSwipe}
+                onSwipeUp={this.onSwipeUp}
+                onSwipeDown={this.onSwipeDown}
+                onSwipeLeft={this.onSwipeLeft}
+                onSwipeRight={this.onSwipeRight}>
+                <Text style={{paddingTop:200,textAlign:'center'}}>onSwipe callback received gesture: {this.state.gestureName}</Text>
+                {/*this.renderCards()*/}
+            </GestureRecognizer>
+        </View>);
     }
 }
 
@@ -52,19 +97,16 @@ const styles = StyleSheet.create({
     },
     clubName: {
         textAlign: 'left',
-        fontSize: '35%',
         textDecorationLine: "underline",
         fontWeight: 'bold'
     },
     mission: {
         textAlign: 'center',
-        fontSize: '25%',
         fontStyle: 'italic',
         paddingTop: '10%'
     },
     associations: {
         textAlign: 'center',
-        fontSize: '25%',
         fontStyle: 'italic',
         paddingTop: '10%'
     }

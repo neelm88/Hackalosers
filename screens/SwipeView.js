@@ -4,18 +4,13 @@ import { Card } from 'react-native-elements';
 import Images from "../constants/Images";
 import Swipe from '../components/Swipe';
 import TestData from '../data_ingest/data';
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export default class SwipeView extends React.Component {
-    state = {
-        yes:0,
-        no:0
-    }
 
     renderCards = (club) => {
         return(
-            <Card style={styles.card}>
+            <Card style={[styles.card, {}]}>
                 <Image style={styles.club_pic} source={Images.empty}/>
                 <Text style={styles.clubName} id='club-name'>Club</Text>
                 <Text style={styles.mission} id='mission'>Our Mission</Text>
@@ -23,6 +18,20 @@ export default class SwipeView extends React.Component {
             </Card>
         );
     };
+
+    _renderCards = (cards) => {
+        return cards.map((card, i) => {
+            return (
+                <Card key={i} style={[styles.card, {zIndex: cards.length - 1}]}>
+                    <Image style={styles.club_pic} source={Images.empty}/>
+                    <Text style={styles.clubName} id='club-name'>Club</Text>
+                    <Text style={styles.mission} id='mission'>Our Mission</Text>
+                        <Text>Our mission is...</Text>
+                </Card>
+            );
+        })
+        
+    }
 
     renderNoMoreCards = () => {
     return (
@@ -32,12 +41,11 @@ export default class SwipeView extends React.Component {
 
     render(){
         return (
-            
-        <ScrollView>
+        <View>
             <Swipe data={TestData}
             renderCards = {this.renderCards}
             renderNoMoreCards = {this.renderNoMoreCards}/>
-        </ScrollView>
+        </View>
         )
     }
 
@@ -56,19 +64,16 @@ const styles = StyleSheet.create({
     },
     clubName: {
         textAlign: 'left',
-        fontSize: '35%',
         textDecorationLine: "underline",
         fontWeight: 'bold'
     },
     mission: {
         textAlign: 'center',
-        fontSize: '25%',
         fontStyle: 'italic',
         paddingTop: '10%'
     },
     associations: {
         textAlign: 'center',
-        fontSize: '25%',
         fontStyle: 'italic',
         paddingTop: '10%'
     }
