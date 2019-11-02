@@ -1,2 +1,2 @@
-node_modules/
-constants/ip.js
+api/constants/ip.js
+.expo/
