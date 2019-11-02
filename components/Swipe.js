@@ -5,6 +5,22 @@ import TestData from '../data_ingest/data';
 import Images from "../constants/Images";
 
 export default class Swipe extends React.Component {
+    constructor(props) {
+            super(props);
+            this._panResponder = PanResponder.create({
+                onStartShouldSetPanResponder: (evt, gestureState) => true,
+                onPanResponderMove: (evt, gestureState) => {
+                    this.position.setValue({ x: gesture.dx, y: gesture.dy });
+                    // The most recent move distance is gestureState.move{X,Y}
+                    // The accumulated gesture distance since becoming responder is
+                    // gestureState.d{x,y}
+                },
+                onPanResponderRelease: (evt, gestureState) => {
+                    // The user has released all touches while this view is the
+                    // responder. This typically means a gesture has succeeded
+                },
+            });
+        };
 
     renderCardItem = (item) => {
         console.log(this.props.data.length)
