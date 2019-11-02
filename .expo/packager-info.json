@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 14540,
+  "expoServerNgrokUrl": "https://k3-5rh.anonymous.hackalosers.exp.direct",
+  "packagerNgrokUrl": "https://packager.k3-5rh.anonymous.hackalosers.exp.direct",
+  "ngrokPid": 21756
 }
