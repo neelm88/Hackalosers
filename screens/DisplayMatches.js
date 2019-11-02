@@ -37,6 +37,7 @@ class ExpandableItemComponent extends Component {
 
   render() {
      
+console.log(dataF[0]);
     return (
       <View>
         {/*Header of the Expandable List Item*/}
@@ -194,6 +195,7 @@ const dataF = [{
     ]
 }
 ]
+
 //Dummy content to show
 //You can also use dynamic data by calling webservice
 const CONTENT = [
@@ -206,7 +208,7 @@ const CONTENT = [
   {
     isExpanded: false,
     clubName: 'Club 2',
-    missionCategory: [{ id: 'Mission' , val: 'Sub Cat 4' }, { id: 'More info', val: 'Sub Cat 5' }],
+    missionCategory: [{ id: 'Mission' , val: 'Sub Cat 4' }],
     infoCategory: [{ id: 'More info' , val: 'https://www.google.com/' }],
 },
 ];
