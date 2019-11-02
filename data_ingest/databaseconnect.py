@@ -1,5 +1,6 @@
 from sshtunnel import SSHTunnelForwarder
 import psycopg2 as db
+import json
 
 remote_user = 'ec2-user'
 remote_host = '3.16.24.144'
@@ -7,8 +8,11 @@ remote_port = 22
 local_host = 'localhost'
 local_port = 5432
 
-
-print('you know how to run pyhton code in vs');
+with open('club_data.json') as json_file:
+    data = json.load(json_file)
+    for club in data:
+        print(club)
+        
 
 def query(q):
      with SSHTunnelForwarder(
