@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './screens/Login.js';
+import Interests from './screens/Interests.js';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -38,6 +39,10 @@ const AppNavigator = createStackNavigator({
   Login: {
       screen: Login ,
       navigationOptions : {header: null}
+  },
+  Interests: {
+    screen: Interests ,
+    navigationOptions : {header: null}
   }
   
 }, {initialRouteName: "Login",

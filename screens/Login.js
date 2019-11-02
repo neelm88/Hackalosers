@@ -43,6 +43,7 @@ export default class Login extends React.Component {
 
                 <Button 
                 title="Forgot Password"
+                onPress={() => {this.props.navigation.navigate('Interests')}}
                 />
          
             </View>
