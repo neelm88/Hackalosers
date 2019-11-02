@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View,TextInput, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, Button, Text,TitleText, View,TextInput, TouchableOpacity} from 'react-native';
 
 export default class Login extends React.Component {
-    state = {
-        username: "bye",
-        password: "hu"
-    };
+    constructor(props) {
+        super(props);
+        this.state = {username: '', password: ''};
+      }
+    
 
     storeUsername = (input) => {
         this.setState({username: input})
@@ -16,27 +17,30 @@ export default class Login extends React.Component {
     }
 
     render(){
-        console.log(this.username);
         return (
             <View style={style_login.container}>
+                <Text style = {style_login.signIn}> Sign In</Text>
                 <TextInput style = {style_login.input}
                 placeholder="Username"
                 onChangeText = {this.storeUsername}
-                value={this.state.username}
-            
+                value={this.state.username}   
                 />
-
-                <TextInput style = {style_login.input}
+                <TextInput  secureTextEntry={true}  style = {style_login.input}
                 placeholder="Password"
                 onChangeText = {this.storePassword}
                 value={this.state.password}
+                />           
+                <Button color = "black"
+                title="Login"
                 />
-               
-               <Button
+                <Button 
+                    title="Forgot Password"
+                />
+                <Button
                     title="Sign Up"
                     color="#f194ff"
                     onPress={() => {this.props.navigation.navigate('UserPreferences')}}
-                    />      
+                />
             </View>
         )
         
@@ -56,4 +60,12 @@ export default class Login extends React.Component {
         height: 40,
         width: 300
      },
+     signIn:{
+        fontSize: 20,
+        fontWeight: 'bold',
+     },
   });
+
+  // Make it more button like
+  // Format forgot buttons 
+  // Link button to another page
