@@ -16,8 +16,9 @@ for club_node in clubs_tags:
     if not club_node.has_attr('class'):
         temp = []
         name_block, mission_block, affil_block = club_node.findChildren('td')
-        name = club_node.find('a').get_text().strip(' \t\n\r')
-        link = club_node.find('a')['href']
+        
+        name = club_node.find('a').get_text().strip(' \\u\t\n\r')
+        link = "https://activities.osu.edu" + club_node.find('a')['href']
         
         mission = mission_block.get_text().strip(' \t\n\r')
         temp.append(mission)

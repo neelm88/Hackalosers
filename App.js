@@ -3,6 +3,7 @@ import Login from './screens/Login.js';
 import SwipeView from './screens/SwipeView';
 import Interests from './screens/Interests.js';
 import UserPreferences from './screens/UserPreferences.js';
+import DisplayMatches from './screens/DisplayMatches.js';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -48,6 +49,10 @@ const AppNavigator = createStackNavigator({
   },
   UserPreferences: {
     screen: UserPreferences,
+    navigationOptions : {header: null}    
+  }, 
+  DisplayMatches: {
+    screen: DisplayMatches,
     navigationOptions : {header: null}    
   }
   

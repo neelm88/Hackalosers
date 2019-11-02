@@ -1,0 +1,5 @@
+{
+  "module": "index.esm.js",
+  "jsnext:main": "index.esm.js",
+  "main": "index.js"
+}

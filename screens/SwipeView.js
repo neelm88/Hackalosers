@@ -56,19 +56,18 @@ const styles = StyleSheet.create({
     },
     clubName: {
         textAlign: 'left',
-        fontSize: '35%',
+     
         textDecorationLine: "underline",
         fontWeight: 'bold'
     },
     mission: {
         textAlign: 'center',
-        fontSize: '25%',
+    
         fontStyle: 'italic',
         paddingTop: '10%'
     },
     associations: {
         textAlign: 'center',
-        fontSize: '25%',
         fontStyle: 'italic',
         paddingTop: '10%'
     }
