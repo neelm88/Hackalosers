@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './screens/Login.js';
+import SwipeView from './screens/SwipeView';
 import Interests from './screens/Interests.js';
 import UserPreferences from './screens/UserPreferences.js';
 import DisplayMatches from './screens/DisplayMatches.js';
@@ -63,8 +64,6 @@ const AppNavigator = createStackNavigator({
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-     
-      
     }
 });
 
