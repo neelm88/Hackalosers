@@ -1,6 +1,11 @@
 import React from 'react';
+import Login from './screens/Login.js';
+import UserPreferences from './screens/UserPreferences.js';
 import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
+/*
 export default function App() {
   return (
     <View style={styles.container}>
@@ -16,4 +21,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+}); */
+
+
+
+class Loader extends React.Component{  
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        
+      </View>
+    );
+  }
+}
+
+const AppNavigator = createStackNavigator({
+  Login: {
+      screen: Login,
+      navigationOptions : {header: null}
+  },
+  UserPreferences: {
+    screen: UserPreferences,
+    navigationOptions : {header: null}    
+  }
+  
+}, {initialRouteName: "Login",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+     
+      
+    }
 });
+
+
+export default createAppContainer(AppNavigator);
