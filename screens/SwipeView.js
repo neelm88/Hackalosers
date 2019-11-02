@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     },
     associations: {
         textAlign: 'center',
-
         fontStyle: 'italic',
         paddingTop: '10%'
     }

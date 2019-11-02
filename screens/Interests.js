@@ -38,7 +38,7 @@ const items = [
     name: 'Technology',
   },];
 
-export default class App extends Component {
+export default class Interests extends Component {
 
     constructor(props) {
         super(props);
