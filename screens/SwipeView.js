@@ -38,7 +38,7 @@ export default class SwipeView extends React.Component {
 
     renderNoMoreCards = () => {
     return (
-      <Card title="No More clubs"/>
+      <Card title="Match Limit Hit"/>
         );
     };
 
