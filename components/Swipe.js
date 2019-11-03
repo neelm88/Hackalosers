@@ -107,7 +107,7 @@ export default class Swipe extends React.Component {
         return (
           <Animated.View
             key={item[this.props.keyProp]}
-            style={[styles.cardStyle, { top: 20 * (i - this.state.index)}]}
+            style={[styles.cardStyle, { top: 0 * (i - this.state.index)}]}
           >
             {this.props.renderCard(item)}
           </Animated.View>

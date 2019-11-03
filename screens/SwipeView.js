@@ -60,7 +60,25 @@ export default class SwipeView extends React.Component {
 
     renderNoMoreCards = () => {
     return (
-      <Card top = "300%" title="Match Limit Hit"/>
+    <View>
+      <Card top = "50%" title="Match Limit Hit"/>
+      <View style={styles.fullContainerAfter}>
+                <TouchableOpacity
+                    style={styles.button}>
+                    <Icon name="close" size={35} color="#ff0000" />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.button} onPress={() => {this.props.navigation.navigate('DisplayMatches')}}>
+                    <Icon name="message" size={35} color="#01a699" />
+                </TouchableOpacity>
+            
+                <TouchableOpacity
+                    style={styles.button}>
+                    <Icon name="check" size={35} color="#01a699" />
+                </TouchableOpacity> 
+            </View>
+        </View>
         );
     };
 
@@ -76,26 +94,20 @@ export default class SwipeView extends React.Component {
             renderNoMoreCards = {this.renderNoMoreCards}/>
 
             <View style={styles.fullContainer}>
-            <View style={styles.yesButtonOuter}>
                 <TouchableOpacity
                     style={styles.button}>
-                    <Icon name="close"  size={30} color="#ff0000" />
+                    <Icon name="close" size={35} color="#ff0000" />
                 </TouchableOpacity>
-            </View>
 
-            <View style={styles.messageButtonOuter}>
+                <TouchableOpacity
+                    style={styles.button} onPress={() => {this.props.navigation.navigate('DisplayMatches')}}>
+                    <Icon name="message" size={35} color="#01a699" />
+                </TouchableOpacity>
+            
                 <TouchableOpacity
                     style={styles.button}>
-                    <Icon name="message"  size={30} color="#01a699" />
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.noButtonOuter}>
-                <TouchableOpacity
-                    style={styles.button}>
-                    <Icon name="check"  size={30} color="#01a699" />
-                </TouchableOpacity>
-            </View>
+                    <Icon name="check" size={35} color="#01a699" />
+                </TouchableOpacity> 
             </View>
         </SafeAreaView>
         )
@@ -124,7 +136,6 @@ const styles = StyleSheet.create({
     },
     mission: {
         textAlign: 'center',
-    
         fontStyle: 'italic',
         paddingTop: '10%'
     },
@@ -132,27 +143,27 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontStyle: 'italic',
         paddingTop: '10%'
-    }/* ,yesButtonOuter: {
-        position: 'relative',
-        marginRight: 50,
-    }, noButtonOuter: {
-        position: 'relative',
-        marginLeft: 50,
-    }, messageButtonOuter: {
-        position: 'relative',
-        paddingLeft: '56%'
-    } */, button: {
+    }, button: {
         borderWidth: 1,
         borderColor: 'rgba(0,0,0,0.2)',
-        margin: '5%',
         justifyContent: 'center',
+        alignItems: 'center',
+        margin:0,
+        marginHorizontal: 13,
         width: 75,
         height: 75,
         backgroundColor: '#fff',
         borderRadius: 50
     }, fullContainer :{
+        marginTop:'160%',
+        flex:1,
+        justifyContent:'center',
         flexDirection: 'row',
-        justifyContent: 'flex-end'
-    }, 
+    }, fullContainerAfter :{
+        marginTop:'125%',
+        flex:1,
+        justifyContent:'center',
+        flexDirection: 'row',
+    }
     
 });
