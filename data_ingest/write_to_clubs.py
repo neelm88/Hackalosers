@@ -21,12 +21,13 @@ def readJSON(cur):
     with open('club_data.json') as json_file:
         data = json.load(json_file)
         for club in data['key']:
-            query_str = "INSERT INTO clubs (affiliations, name, location, mission, link, other) VALUES (" \
+            query_str = "INSERT INTO snippets_clubdata (affiliations, name, location, mission, link, img_url, other) VALUES (" \
                         + "\'" + validate(club, 'type') \
                         + "\', \'" + validate(club, 'name') \
                         + "\', \'" + validate(club, 'location') \
                         + "\', \'" + validate(club, 'mission') \
                         + "\', \'" + validate(club, 'link') \
+                        + "\', \'" + 'assests/buckeye.png'\
                         + "\', \'" + validate(club, 'service') + "\');"  
             query(query_str, cur)
 
