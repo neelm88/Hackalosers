@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, ScrollView, TouchableOpacity} from 'react-native';
 import { Card } from 'react-native-elements';
 import Images from "../constants/Images";
 import Swipe from '../components/Swipe';
@@ -13,12 +13,24 @@ export default class SwipeView extends React.Component {
         no:0
     }
 
-    renderCards = (club) => {
+    handleLikedClubs = () => {
+        this.setState(({ likedClubs }) => ({
+            likedClubs: likedClubs + 1
+        }));
+      };
+    
+      handlePassedClubs = () => {
+        this.setState(({ passedClubs }) => ({
+            passedClubs: passedClubs + 1
+        }));
+      };
+
+    renderCards(club){
         return(
             <Card style={styles.card}>
                 <Image style={styles.club_pic} source={Images.empty}/>
                 <Text style={styles.clubName} id='club-name'>Club</Text>
-                <Text style={styles.mission} id='mission'>Our Mission</Text>
+                <Text style={styles.mission} id='mission'>{club.name}</Text>
                     <Text>Our mission is...</Text>
             </Card>
         );
@@ -32,12 +44,15 @@ export default class SwipeView extends React.Component {
 
     render(){
         return (
-            
-        <ScrollView>
-            <Swipe data={TestData}
-            renderCards = {this.renderCards}
+        <SafeAreaView>
+            <Swipe 
+            onSwipeRight = {this.handleLikedClubs}
+            onSwipeLeft = {this.handlePassedClubs}
+            keyProp="name"
+            data={TestData}
+            renderCard = {this.renderCards}
             renderNoMoreCards = {this.renderNoMoreCards}/>
-        </ScrollView>
+        </SafeAreaView>
         )
     }
 

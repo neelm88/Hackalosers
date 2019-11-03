@@ -32,11 +32,12 @@ export default class Login extends React.Component {
                 />           
                 <Button color = "black"
                 title="Login"
+                onPress={() => {this.props.navigation.navigate('SwipeView')}}
                 />
                 <Button 
                 title="Forgot Password"
                 onPress={() => {this.props.navigation.navigate('Interests')}}
-                    title="Forgot Password"
+                   
                 />
                 <Button
                     title="Sign Up"

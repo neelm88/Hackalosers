@@ -54,6 +54,10 @@ const AppNavigator = createStackNavigator({
   DisplayMatches: {
     screen: DisplayMatches,
     navigationOptions : {header: null}    
+  },
+  SwipeView: {
+    screen: SwipeView,
+    navigationOptions : {header: null}   
   }
   
 }, {initialRouteName: "Login",
