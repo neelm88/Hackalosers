@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'api.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tutorial.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -15,6 +15,7 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+    print("x")
 
 
 if __name__ == '__main__':
