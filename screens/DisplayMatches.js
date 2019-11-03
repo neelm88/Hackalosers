@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 
-import { LayoutAnimation, Object, Linking, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform,} from 'react-native';
+import { LayoutAnimation, Linking, StyleSheet, View, Text, ScrollView, Image, UIManager, TouchableOpacity, Platform,} from 'react-native';
 
 
 class ExpandableItemComponent extends Component {
@@ -113,7 +113,7 @@ export default class DisplayMatches extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.mainHeader}>Matches</Text>
+        <Image source={require('../assets/matches.png')} style={{backgroundColor: '#a9dbc0', paddingBottom: 10, paddingTop: 50, alignItems: 'center', width: 300, height: 150}}/>
         <ScrollView>
           {this.state.listDataSource.map((item, key) => (
             <ExpandableItemComponent
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
+    alignContent: 'center',
     backgroundColor: '#F5FCFF',
   },
   mainHeader: {
