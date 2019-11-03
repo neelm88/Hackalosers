@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, ScrollView, TouchableOpacity} from 'react-native';
-import { Card } from 'react-native-elements';
+import { StyleSheet, SafeAreaView, Text, Dimensions, Image, View, TouchableOpacity} from 'react-native';
+import { Card, Icon } from 'react-native-elements';
 import Images from "../constants/Images";
 import Swipe from '../components/Swipe';
 import TestData from '../data_ingest/data';
@@ -52,6 +52,29 @@ export default class SwipeView extends React.Component {
             data={TestData}
             renderCard = {this.renderCards}
             renderNoMoreCards = {this.renderNoMoreCards}/>
+
+            <View style={styles.fullContainer}>
+            <View style={styles.yesButtonOuter}>
+                <TouchableOpacity
+                    style={styles.button}>
+                    <Icon name="close"  size={30} color="#ff0000" />
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.messageButtonOuter}>
+                <TouchableOpacity
+                    style={styles.button}>
+                    <Icon name="message"  size={30} color="#01a699" />
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.noButtonOuter}>
+                <TouchableOpacity
+                    style={styles.button}>
+                    <Icon name="check"  size={30} color="#01a699" />
+                </TouchableOpacity>
+            </View>
+            </View>
         </SafeAreaView>
         )
     }
@@ -84,5 +107,27 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontStyle: 'italic',
         paddingTop: '10%'
-    }
+    }/* ,yesButtonOuter: {
+        position: 'relative',
+        marginRight: 50,
+    }, noButtonOuter: {
+        position: 'relative',
+        marginLeft: 50,
+    }, messageButtonOuter: {
+        position: 'relative',
+        paddingLeft: '56%'
+    } */, button: {
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,0.2)',
+        margin: '5%',
+        justifyContent: 'center',
+        width: 75,
+        height: 75,
+        backgroundColor: '#fff',
+        borderRadius: 50
+    }, fullContainer :{
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    }, 
+    
 });
