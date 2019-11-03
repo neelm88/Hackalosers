@@ -50,7 +50,7 @@ export default class SwipeView extends React.Component {
     renderCards(club){
         return(
             <Card style={styles.card}>
-                <Image style={styles.club_pic} source={Images.empty}/>
+                <Image source={require('../assets/osu.png')} style={styles.club_pic}/>
                 <Text style={styles.clubName} id='club-name'>{club.name}</Text>
                     <Text style={styles.mission}> Our mission is...</Text>
                     <Text style={styles.mission} id='mission'>{'\t'}{club.mission}{'\n'}</Text>
@@ -120,13 +120,17 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'left',
         justifyContent: 'center',
+        borderRadius: 25,
+        padding: 20,
+        overflow: 'hidden'
     },
     container: {
         backgroundColor: '#a9dbc0',
         height:'100%'
     },
     club_pic: {
-       margin: "7%",
+       margin: "3%",
+
     },
     clubName: {
         textAlign: 'left',
