@@ -7,32 +7,44 @@ const items = [
     id: 'Awareness/Activism',
     name: 'Awareness/Activism',
   },{
-    id: 'Academic',
-    name: 'Academic',
+    id: 'Academic/College',
+    name: 'Academic/College',
   },{
-    id: 'Cultural',
-    name: 'Cultural',
+    id: 'Cultural/Ethnic',
+    name: 'Cultural/Etnic',
   },{
-    id: 'Fraternities',
-    name: 'Fraternities',
+    id: 'Community Serivce/Service Learning',
+    name: 'Community Serivce/Service Learning',
   },{
-    id: 'Honoraries',
-    name: 'Honoraries',
+    id: 'Creative and Performing Arts',
+    name: 'Creative and Performing Arts',
+  },{
+    id: 'Goverance Organization',
+    name: 'Goverance Organization',
+  },{
+    id: 'Honoraries/Honor Societies',
+    name: 'Honoraries/Honor Societies',
+  },{
+    id: 'Media',
+    name: 'Media',
   },{
     id: 'Performing Arts',
     name: 'Performing Arts',
   }, {
-    id: 'Religious',
-    name: 'Religious',
+    id: 'Religious/Spiritual',
+    name: 'Religious/Spiritual',
   },{
-    id: 'Sororities',
-    name: 'Sororities',
+    id: 'Social Fraternities/Sororities',
+    name: 'Social Fraternities/Sororities',
   },{
-    id: 'Sports',
-    name: 'Sports',
+    id: 'Sports and Recreation',
+    name: 'Sports and Recreation',
   },{
     id: 'Service',
     name: 'Service',
+  },{
+    id: 'Special Interest',
+    name: 'Special Interest',
   },{
     id: 'Technology',
     name: 'Technology',
