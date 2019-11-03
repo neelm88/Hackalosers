@@ -3,16 +3,37 @@ import { StyleSheet, SafeAreaView, Text, View, Image, ScrollView, TouchableOpaci
 import { Card } from 'react-native-elements';
 import Images from "../constants/Images";
 import Swipe from '../components/Swipe';
-import TestData from '../data_ingest/data';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export default class SwipeView extends React.Component {
-    state = {
-        yes:0,
-        no:0
+    constructor(props) {
+        super(props);
+        this.state = {
+            yes: 0,
+            no: 0,
+            isLoading: false,
+            dataSource: []
+        }
     }
 
+    componentDidMount(){
+        return fetch('http://172.20.10.6:8000/club_data.json')
+          .then((response) => response.json())
+          .then((responseJson) => {
+    
+            this.setState({
+              isLoading: false,
+              dataSource: responseJson.results,
+            }, function(){
+    
+            });
+    
+          })
+          .catch((error) =>{
+            console.error(error);
+          });
+      }
     handleLikedClubs = () => {
         this.setState(({ likedClubs }) => ({
             likedClubs: likedClubs + 1
@@ -49,13 +70,12 @@ export default class SwipeView extends React.Component {
             onSwipeRight = {this.handleLikedClubs}
             onSwipeLeft = {this.handlePassedClubs}
             keyProp="name"
-            data={TestData}
+            data={this.state.dataSource}
             renderCard = {this.renderCards}
             renderNoMoreCards = {this.renderNoMoreCards}/>
         </SafeAreaView>
         )
     }
-
 }
 
 const styles = StyleSheet.create({
