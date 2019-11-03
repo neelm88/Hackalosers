@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Button, Text,TitleText, View,TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Button, Text,TitleText, View,TextInput, TouchableOpacity, Dimensions, Image} from 'react-native';
+import { AnimatedBackgroundColorView } from 'react-native-animated-background-color-view';
+import { DiscoBall } from 'rn-disco-ball';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -18,47 +20,52 @@ export default class Login extends React.Component {
 
     render(){
         return (
-            <View style={style_login.container}>
+            <AnimatedBackgroundColorView color='#a9dbc0' initialColor='#f5b5f1' duration={60000} style = {style_login.container}>
+                <Image source={{uri : 'https://img1.picmix.com/output/stamp/normal/3/5/1/1/1321153_5c59f.gif'}} style={{position: 'absolute', top: 20, width: 300, height: 300}}/>
+                <View style={{padding: 50}}/>
                 <Text style = {style_login.signIn}> Sign In</Text>
                 <TextInput style = {style_login.input}
-                placeholder="Username"
-                onChangeText = {this.storeUsername}
-                value={this.state.username}   
+                    placeholder="Username"
+                    onChangeText = {this.storeUsername}
+                    value={this.state.username}   
                 />
                 <TextInput  secureTextEntry={true}  style = {style_login.input}
-                placeholder="Password"
-                onChangeText = {this.storePassword}
-                value={this.state.password}
+                    placeholder="Password"
+                    onChangeText = {this.storePassword}
+                    value={this.state.password}
                 />           
                 <Button color = "black"
-                title="Login"
-                onPress={() => {this.props.navigation.navigate('SwipeView')}}
+                    opacity="50%"
+                    title="Login"
+                   // onPress={() => {this.props.navigation.navigate('SwipeView')}}
+                 
                 />
                 <Button 
-                title="Forgot Password"
-                onPress={() => {this.props.navigation.navigate('Interests')}}
-                   
+                    title="Forgot Password"
+                    color="black"
+                    onPress={() => {this.props.navigation.navigate('Interests')}}
+                    title="Forgot Password"
                 />
                 <Button
                     title="Sign Up"
-                    color="#f194ff"
+                    color="black"
                     onPress={() => {this.props.navigation.navigate('UserPreferences')}}
                 />
-            </View>
-        )
+            </AnimatedBackgroundColorView>
+        );
         
     }
 }
 
-  
+  const { height } = Dimensions.get("window");    
   const style_login = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     input: {
+        opacity: 1.0,
         marginTop: 10,
         height: 40,
         width: 300
@@ -66,7 +73,7 @@ export default class Login extends React.Component {
      signIn:{
         fontSize: 20,
         fontWeight: 'bold',
-     },
+     }
   });
 
   // Make it more button like

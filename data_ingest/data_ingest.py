@@ -22,6 +22,7 @@ for club_node in clubs_tags:
         
         mission = mission_block.get_text().strip(' \t\n\r')
         temp['name'] = name
+        temp['mission'] = mission
         temp['link'] = link
 
         affiliations = affil_block.get_text().split(',')
