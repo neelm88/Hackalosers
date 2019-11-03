@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableHighlight, Image, Linking, TextInput, Picker} from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
+import IP from "../constants/ip.js"
 import {
   StyleSheet,
   Button,
@@ -34,7 +35,7 @@ export default class UserPreferences extends React.Component {
  
   }
   nextPage() {
-    fetch('http://172.20.10.6:8000/user_data/', {
+    fetch(IP.ip + '/user_data/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
