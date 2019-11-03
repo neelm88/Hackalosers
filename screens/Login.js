@@ -38,7 +38,9 @@ export default class Login extends React.Component {
                 <Button color = "black"
                     opacity="50%"
                     title="Login"
-                   onPress={() => {this.props.navigation.navigate('SwipeView')}}
+                    onPress={() => {this.props.navigation.navigate('SwipeView', {
+                        username: this.state.username, 
+                    })}}
                  
                 />
                 <Button 
