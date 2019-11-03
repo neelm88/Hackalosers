@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
 
     card: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#a9dbc0',
         textAlign: 'left',
         justifyContent: 'center',
     },
@@ -137,19 +137,17 @@ const styles = StyleSheet.create({
     clubName: {
         textAlign: 'left',
         textDecorationLine: "underline",
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontStyle: "italic",
     },
     mission: {
         textAlign: 'center',
         fontStyle: 'italic',
         paddingTop: '10%'
     },
-    associations: {
-        textAlign: 'center',
-        fontStyle: 'italic',
-        paddingTop: '10%'
-    }, cardStyle: {
+   cardStyle: {
         position: 'absolute',
+        backgroundColor: '#a9dbc0',
         width: SCREEN_WIDTH
       }
 });
