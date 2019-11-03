@@ -14,6 +14,8 @@ urlpatterns = [
     path('user_data/<int:pk>/', views.UserDataDetail.as_view(), name='user-data-detail'),
     path('club_data/', views.ClubDataList.as_view(), name='club-data-list'),
     path('club_data/<int:pk>/', views.ClubDataDetail.as_view(), name='club-data-detail'),
+    path('match_data/', views.MatchDataList.as_view(), name='match-data-list'),
+    path('match_data/<int:pk>/', views.MatchDataDetail.as_view(), name='match-data-detail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

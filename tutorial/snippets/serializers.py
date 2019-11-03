@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from snippets.models import Snippet, UserData, LANGUAGE_CHOICES, STYLE_CHOICES, ClubData
+from snippets.models import Snippet, UserData, LANGUAGE_CHOICES, STYLE_CHOICES, ClubData, MatchData
 
 
 class SnippetSerializer(serializers.HyperlinkedModelSerializer): # new
@@ -26,6 +26,13 @@ class ClubDataSerializer(serializers.HyperlinkedModelSerializer): # new
         fields = ('name', 'mission', 'affiliations', 'link', 'img_url', 'other')
     def create(self, validated_data):
         return ClubData.objects.create(**validated_data)
+
+class MatchDataSerializer(serializers.HyperlinkedModelSerializer): # new
+    class Meta:
+        model = MatchData
+        fields = ('username', 'club_name')
+    def create(self, validated_data):
+        return MatchData.objects.create(**validated_data)
 
 class UserSerializer(serializers.HyperlinkedModelSerializer): # new
     snippets = serializers.HyperlinkedRelatedField( # new

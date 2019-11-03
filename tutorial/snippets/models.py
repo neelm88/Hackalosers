@@ -69,3 +69,13 @@ class ClubData(models.Model):
         return super(ClubData, self).save(*args, **kwargs)
     def __str__(self):
         return self.name
+
+class MatchData(models.Model):
+    username = models.CharField(max_length=1024, blank=True, default='')
+    club_name = models.CharField(max_length=1024, blank=True, default='')
+    class Meta:
+        ordering = ('username',)
+    def save(self, *args, **kwargs):
+        return super(MatchData, self).save(*args, **kwargs)
+    def __str__(self):
+        return self.name
