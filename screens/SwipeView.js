@@ -76,7 +76,6 @@ export default class SwipeView extends React.Component {
         </SafeAreaView>
         )
     }
-
 }
 
 const styles = StyleSheet.create({
