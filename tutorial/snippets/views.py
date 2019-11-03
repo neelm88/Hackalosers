@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User 
 from rest_framework import generics, permissions, status
 from .permissions import IsOwnerOrReadOnly
-from .models import Snippet, UserData
-from .serializers import SnippetSerializer, UserSerializer, UserDataSerializer
+from .models import Snippet, UserData, ClubData
+from .serializers import SnippetSerializer, UserSerializer, UserDataSerializer, ClubDataSerializer
 from rest_framework.decorators import api_view # new
 from rest_framework.response import Response # new
 from rest_framework.reverse import reverse # new
@@ -55,11 +55,20 @@ class UserDataDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserData.objects.all()
     serializer_class = UserDataSerializer
 
+class ClubDataList(generics.ListCreateAPIView):
+    queryset = ClubData.objects.all()
+    serializer_class = ClubDataSerializer
+
+class ClubDataDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ClubData.objects.all()
+    serializer_class = ClubDataSerializer
+
 @api_view(['GET']) # new
 def api_root(request, format=None):
     return Response({
         'users': reverse('user-list', request=request, format=format),
         'user_data': reverse('user-data-list', request=request, format=format),
+        'club_data': reverse('club-data-list', request=request, format=format),
         'snippets': reverse('snippet-list', request=request, format=format)
     })
 
@@ -71,6 +80,19 @@ def user_data_list(request, format=None):
         return Response(serializer.data)
     elif request.method == 'POST':
         serializer = UserDataSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','POST'])
+def club_data_list(request, format=None):
+    if request.method == 'GET':
+        data = ClubData.objects.all()
+        serializer = ClubDataSerializer(data, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = ClubDataSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
