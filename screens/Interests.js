@@ -92,7 +92,7 @@ export default class Interests extends Component {
       <Image  style={{position:'absolute',bottom:"10%", left: "35%", width: 100, height: 100}} source = {require('../assets/pinkdisco.gif')}/> 
       
       <View style={{position:'absolute',bottom:30, left: "20%"}}>
-       < TouchableOpacity activeOpacity = {0.5} onPress={() => {this.props.navigation.navigate('DisplayMatches')}}>
+       < TouchableOpacity activeOpacity = {0.5} onPress={() => {this.props.navigation.navigate('SwipeView')}}>
 
         <Image  style={{width: 200, height: 100}} source = {require('../assets/matchme.png')}/> 
 
