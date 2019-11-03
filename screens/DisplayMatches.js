@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-
+import IP from '../constants/ip.js';
 import { LayoutAnimation, Linking, StyleSheet, View, Text, ScrollView, Image, UIManager, TouchableOpacity, Platform,} from 'react-native';
 
 
@@ -14,15 +14,7 @@ class ExpandableItemComponent extends Component {
       data: [],
     };
   }
-  componentDidMount(){
-    return fetch('')
-    .then(response => response.json())
-    .then(responseJson => {
-      this.setState({
-        loading
-      })
-    })
-  }
+
 
 
   componentWillReceiveProps(nextProps) {
@@ -107,12 +99,40 @@ export default class DisplayMatches extends Component {
   //Main View defined under this Class
   constructor() {
     super();
-    this.state = { listDataSource: CONTENT };
+    this.state = { listDataSource: CONTENT,
+                    allMatches: [],
+                    allClubs: [],
+                    matchedClubs: [],
+                    isLoading: false
+    };
   }
- 
+  componentWillMount(){
+    this.setState({isLoading: true})
+    console.log("a");
+      fetch(IP.ip + 'match_data.json')
+    .then(response => response.json())
+    .then(responseJson => {
+      this.setState({
+        allMatches: responseJson.results 
+      });
+      fetch(IP.ip + 'club_data.json')
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          allClubs: responseJson.results 
+        });
+
+        console.log("b");
+      });
+      console.log("b");
+    });
+    this.setState({isLoading: false})
+    console.log("d");
+
+  } 
   updateLayout = index => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    const array = [...this.state.listDataSource];
+    const array = [...this.state.matchedClubs];
     array.map((value, placeindex) =>
       placeindex === index
         ? (array[placeindex]['isExpanded'] = !array[placeindex]['isExpanded'])
@@ -120,19 +140,36 @@ export default class DisplayMatches extends Component {
     );
     this.setState(() => {
       return {
-        listDataSource: array,
+        matchedClubs: array,
       };
     });
   };
  
   render() {
+    if(this.state.isLoading) {
+      return(<View><Text>Loading</Text></View>);
+    }
+    for(let i = 0; i < this.state.allMatches.length; i++) {
+      var arr = []
+      if(this.state.allMatches[i].username == "neelm88") {
+        for(let j = 0; j < this.state.allClubs; j++) {
+          if(this.state.allMatches[i].club_name == this.state.allClubs[j].name) {
+            this.state.allClubs[j].isExpanded = false;
+            this.state.allClubs[j].missionCategory = []
+            arr.push(this.state.allClubs[j]);
+          }
+        }
+      }
+    }
+    this.setState({matchedClubs: arr});
+
     return (
       <View style={styles.container}>
         <View style={styles.mainHeader}>
           <Image source={require('../assets/matches.png')} style={styles.imgStyling}/>
         </View>
         <ScrollView>
-          {this.state.listDataSource.map((item, key) => (
+          {this.state.matchedClubs.map((item, key) => (
             <ExpandableItemComponent
               key={item.clubName}
               onClickFunction={this.updateLayout.bind(this, key)}
