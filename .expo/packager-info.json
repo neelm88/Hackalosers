@@ -1,2 +1,12 @@
 {
+<<<<<<< HEAD
+=======
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 33886,
+  "expoServerNgrokUrl": "https://ns-39z.anonymous.hackalosers.exp.direct",
+  "packagerNgrokUrl": "https://packager.ns-39z.anonymous.hackalosers.exp.direct",
+  "ngrokPid": 33896
+>>>>>>> eb07011663e88638de755ea806fa9a2feb921459
 }
