@@ -10,8 +10,21 @@ class ExpandableItemComponent extends Component {
     super();
     this.state = {
       layoutHeight: 0,
+      loading: false,
+      data: [],
     };
   }
+  componentDidMount(){
+    return fetch('')
+    .then(response => response.json())
+    .then(responseJson => {
+      this.setState({
+        loading
+      })
+    })
+  }
+
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.item.isExpanded) {
       this.setState(() => {
