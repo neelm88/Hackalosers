@@ -80,7 +80,8 @@ remote_host = '3.16.24.144'
 remote_port = 22
 local_host = 'localhost'
 local_port = 5432
-server = SSHTunnelForwarder((remote_host, remote_port),ssh_username=remote_user,ssh_private_key='',remote_bind_address=(local_host, local_port))
+server = SSHTunnelForwarder((remote_host, remote_port), ssh_username=remote_user,
+                            ssh_private_key='HVMInstanceHackolosers.pem', remote_bind_address=(local_host, local_port))
 server.start()
 DATABASES = {
     'default': {
