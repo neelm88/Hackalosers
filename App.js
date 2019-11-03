@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './screens/Login.js';
-//import SwipeView from './screens/SwipeView';
+import SwipeView from './screens/SwipeView';
 import Interests from './screens/Interests.js';
 import UserPreferences from './screens/UserPreferences.js';
 import DisplayMatches from './screens/DisplayMatches.js';
@@ -43,10 +43,10 @@ const AppNavigator = createStackNavigator({
       screen: Login,
       navigationOptions : {header: null}
   },
-  /*SwipeView: {
+  SwipeView: {
       screen: SwipeView,
       navigationOptions : {header: null}
-  },*/
+  },
   Interests: {
     screen: Interests ,
     navigationOptions : {header: null}
