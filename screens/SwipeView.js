@@ -5,6 +5,7 @@ import Images from "../constants/Images";
 import Swipe from '../components/Swipe';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import IP from '../constants/ip.js'
 
 export default class SwipeView extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ export default class SwipeView extends React.Component {
     }
 
     componentDidMount(){
-        return fetch('http://172.20.10.6:8000/club_data.json')
+        return fetch(IP.ip + 'club_data.json')
           .then((response) => response.json())
           .then((responseJson) => {
     
@@ -50,22 +51,22 @@ export default class SwipeView extends React.Component {
         return(
             <Card style={styles.card}>
                 <Image style={styles.club_pic} source={Images.empty}/>
-                <Text style={styles.clubName} id='club-name'>Club</Text>
-                <Text style={styles.mission} id='mission'>{club.name}</Text>
-                    <Text>Our mission is...</Text>
+                <Text style={styles.clubName} id='club-name'>{club.name}</Text>
+                    <Text style={styles.mission}> Our mission is...</Text>
+                    <Text style={styles.mission} id='mission'>{'\t'}{club.mission}{'\n'}</Text>
             </Card>
         );
     };
 
     renderNoMoreCards = () => {
     return (
-      <Card title="Match Limit Hit"/>
+      <Card top = "300%" title="Match Limit Hit"/>
         );
     };
 
     render(){
         return (
-        <SafeAreaView>
+        <SafeAreaView style = {styles.container}>
             <Swipe 
             onSwipeRight = {this.handleLikedClubs}
             onSwipeLeft = {this.handlePassedClubs}
@@ -73,6 +74,7 @@ export default class SwipeView extends React.Component {
             data={this.state.dataSource}
             renderCard = {this.renderCards}
             renderNoMoreCards = {this.renderNoMoreCards}/>
+            
         </SafeAreaView>
         )
     }
@@ -82,28 +84,24 @@ const styles = StyleSheet.create({
 
     card: {
         flex: 1,
-        backgroundColor: '#fff',
         textAlign: 'left',
         justifyContent: 'center',
     },
+    container: {
+        backgroundColor: '#a9dbc0',
+        height:'100%'
+    },
     club_pic: {
-        margin: '10%'
+       margin: "7%",
     },
     clubName: {
         textAlign: 'left',
-     
-        textDecorationLine: "underline",
+        fontSize: 20,
+        fontStyle: "italic",
         fontWeight: 'bold'
     },
     mission: {
-        textAlign: 'center',
-    
-        fontStyle: 'italic',
-        paddingTop: '10%'
-    },
-    associations: {
-        textAlign: 'center',
-        fontStyle: 'italic',
-        paddingTop: '10%'
+        textAlign: 'left',
+        paddingTop: 20,
     }
 });

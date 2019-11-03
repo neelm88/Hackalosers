@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Button, Text,TitleText, View,TextInput, TouchableOpacity, Dimensions, Image} from 'react-native';
 import { AnimatedBackgroundColorView } from 'react-native-animated-background-color-view';
-import { DiscoBall } from 'rn-disco-ball';
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username: '', password: ''};
-      }
-    
+        this.state = {
+            username: '', 
+            password: '',
+        };
+      }   
 
     storeUsername = (input) => {
         this.setState({username: input})
@@ -20,9 +21,9 @@ export default class Login extends React.Component {
 
     render(){
         return (
-            <AnimatedBackgroundColorView color='#a9dbc0' initialColor='#f5b5f1' duration={60000} style = {style_login.container}>
-                <Image source={{uri : 'https://img1.picmix.com/output/stamp/normal/3/5/1/1/1321153_5c59f.gif'}} style={{position: 'absolute', top: 20, width: 400, height: 400}}/>
-                <Image source={require('../assets/hubbub.png')} style={{width: 400, height: 200}}/>
+            <AnimatedBackgroundColorView color='#a9dbc0' initialColor='#f5b5f1' duration={60000} style = {style_login.container}>  
+                <Image source={{uri : 'https://img1.picmix.com/output/stamp/normal/3/5/1/1/1321153_5c59f.gif'}} style={{position: 'absolute', top: "3.5%", width: 400, height: 400}}/>
+                <Image source={require('../assets/hubbub.png')} style={{ width: 400, height: 200}}/>
                 <Text style = {style_login.signIn}> Sign In</Text>
                 <TextInput style = {style_login.input}
                     placeholder="Username"
@@ -56,11 +57,9 @@ export default class Login extends React.Component {
                 />
             </AnimatedBackgroundColorView>
         );
-        
     }
 }
-
-  const { height } = Dimensions.get("window");    
+   
   const style_login = StyleSheet.create({
     container: {
       flex: 1,
