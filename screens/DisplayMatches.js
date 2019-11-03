@@ -12,21 +12,8 @@ class ExpandableItemComponent extends Component {
       layoutHeight: 0,
     };
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.item.isExpanded) {
-      this.setState(() => {
-        return {
-          layoutHeight: null,
-        };
-      });
-    } else {
-      this.setState(() => {
-        return {
-          layoutHeight: 0,
-        };
-      });
-    }
-  }
+  
+
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.layoutHeight !== nextState.layoutHeight) {
       return true;
@@ -51,13 +38,11 @@ class ExpandableItemComponent extends Component {
             overflow: 'hidden',
           }}>
           {/*Content under the header of the Expandable List Item*/}
-          
           {this.props.item.missionCategory.map((item, key) => (
             <TouchableOpacity
               key={key}
               style={styles.content}
               >
-              <Image source={require('../assets/buckeye.png')} style={styles.iconStyling}/>
               <Text style={styles.textSubHeader}>
                 {item.id}
               </Text>
@@ -115,9 +100,7 @@ export default class DisplayMatches extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.mainHeader}>
-          <Image source={require('../assets/matches.png')} style={styles.imgStyling}/>
-        </View>
+        <Image source={require('../assets/matches.png')} style={{backgroundColor: '#a9dbc0', paddingBottom: 10, paddingTop: 50, alignItems: 'center', width: 300, height: 150}}/>
         <ScrollView>
           {this.state.listDataSource.map((item, key) => (
             <ExpandableItemComponent
@@ -135,13 +118,14 @@ export default class DisplayMatches extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 0,
+    paddingTop: 30,
     alignContent: 'center',
     backgroundColor: '#F5FCFF',
   },
   mainHeader: {
-    alignItems: 'center',
-    backgroundColor: '#a9dbc0',
+    marginTop: 50,
+    textAlign: 'center',
+    fontSize: 40,
   },
   header: {
     backgroundColor: '#F5FCFF',
@@ -163,10 +147,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'black',
     fontStyle: 'italic',
-    fontWeight: 'bold',
-    paddingTop: 10,
-    marginBottom: 10
-
   },
   text: {
     fontSize: 16,
@@ -177,54 +157,47 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     backgroundColor: '#fff',
   },
-  imgStyling: {
-    position:"relative",
-    marginTop: 50,
-    width: 300,
-    height: 150,
-    marginBottom: -70
-  },
-  iconStyling: {
- 
-    marginLeft: 140,
-    marginRight: 140,
-    position:'relative',
-    width: 80,
-    height: 80,
-  }
 });
  
 
-const dataF = [{
-      "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0",
-      "location": "Columbus",
-      "name": "1 Day For The K.I.A., Inc.",
-      "service": "Community Service/Service Learning|Special Interest",
-      "type": "Awareness/Activism"
-    },
-    {
-      "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=9c37c72e-3852-475c-8605-32f8594b5dbc&l=ALL&v=list&c=Columbus&page=0",
-      "location": "Columbus",
-      "name": "1girl",
-      "service": "Community Service/Service Learning",
-      "type": "Awareness/Activism"
-    }
+const dataF = [ {
+  "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0", 
+  "location": "Columbus", 
+  "name": "1 Day For The K.I.A., Inc.", 
+  "service": "Community Service/Service Learning|Special Interest", 
+  "type": "Awareness/Activism"
+},{
+  "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=9c37c72e-3852-475c-8605-32f8594b5dbc&l=ALL&v=list&c=Columbus&page=0", 
+  "location": "Columbus", 
+  "name": "1girl", 
+  "service": "Community Service/Service Learning", 
+  "type": "Awareness/Activism"
+}
 ]
+
+const o =  dataF.map( ( {name, type, location, service, link} ) => {
+  //console.log(name)
+  //console.log(type)
+  //console.log(location)
+  //console.log(service)
+  //console.log(link)
+  console.log( <p key={name}>{name} - {type}</p>)
+
+})
 
 //Dummy content to show
 //You can also use dynamic data by calling webservice
 const CONTENT = [
   {
     isExpanded: false,
-    clubName: '1 Day For The K.I.A., Inc.',
+    clubName: 'Club 1',
     missionCategory: [{ id: 'Mission' , val: '1 Day for the K.I.A.\u2019s purpose is to raise awareness and commemorate fallen military service members. 1 Day for the K.I.A. accomplishes our ...' }],
     infoCategory: [{ id: 'More info' , val: 'https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0' }],
   },
   {
     isExpanded: false,
-    clubName: '1girl',
-    missionCategory: [{ id: 'Mission' , val: 'To provide girls everywhere the opportunity to develop the skills and confidence they need to lead fulfilling lives and become successful le...' }],
-    infoCategory: [{ id: 'More info' , val: 'https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=9c37c72e-3852-475c-8605-32f8594b5dbc&l=ALL&v=list&c=Columbus&page=0' }],
+    clubName: 'Club 2',
+    missionCategory: [{ id: 'Mission' , val: 'Sub Cat 4' }],
+    infoCategory: [{ id: 'More info' , val: 'https://www.google.com/' }],
 },
-
 ];

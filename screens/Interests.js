@@ -86,12 +86,12 @@ export default class Interests extends Component {
                     searchInputStyle={{ color: '#CCC' }}
                     submitButtonColor = "#D9B4F5"
                     submitButtonText="Submit"
-                    fixedHeight = 'true'
+                    fixedHeight = {true}
                 />
       
-      <Image  style={{position:'absolute',bottom:150, left: 170, width: 80, height: 80}} source = {require('../assets/pinkdisco.gif')}/> 
+      <Image  style={{position:'absolute',bottom:"10%", left: "35%", width: 100, height: 100}} source = {require('../assets/pinkdisco.gif')}/> 
       
-      <View style={{position:'absolute',bottom:30, left: 100}}>
+      <View style={{position:'absolute',bottom:30, left: "20%"}}>
        < TouchableOpacity activeOpacity = {0.5} onPress={() => {this.props.navigation.navigate('DisplayMatches')}}>
 
         <Image  style={{width: 200, height: 100}} source = {require('../assets/matchme.png')}/> 

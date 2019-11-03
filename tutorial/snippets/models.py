@@ -55,13 +55,13 @@ class UserData(models.Model):
         return self.username
 
 class ClubData(models.Model):
-    name = models.CharField(max_length=100, blank=True, default='')
+    name = models.CharField(max_length=1024, blank=True, default='')
     mission = models.CharField(max_length=1024, blank=True, default='')
     affiliations = models.CharField(max_length=255, blank=True, default='')
-    link = models.CharField(max_length=100, blank=True, default='')
-    img_url = models.CharField(max_length=255, blank=True, default='')
-    location = models.CharField(max_length=100, blank=True, default='')
-    other = models.CharField(max_length=100, blank=True, default='')
+    link = models.CharField(max_length=1024, blank=True, default='')
+    img_url = models.CharField(max_length=1024, blank=True, default='')
+    location = models.CharField(max_length=1024, blank=True, default='')
+    other = models.CharField(max_length=1024, blank=True, default='')
 
     class Meta:
         ordering = ('name',)
