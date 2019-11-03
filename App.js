@@ -83,6 +83,10 @@ const AppNavigator = createStackNavigator({
       screen: Login,
       navigationOptions : {header: null}
   },
+  SwipeView: {
+      screen: SwipeView,
+      navigationOptions : {header: null}
+  },
   Interests: {
     screen: Interests ,
     navigationOptions : {header: null}
@@ -95,10 +99,6 @@ const AppNavigator = createStackNavigator({
     screen: DisplayMatches,
     navigationOptions : {header: null}    
   },
-  SwipeView: {
-    screen: SwipeView,
-    navigationOptions : {header: null}   
-  }
   
 }, {initialRouteName: "Login",
     defaultNavigationOptions: {
