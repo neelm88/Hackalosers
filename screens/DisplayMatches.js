@@ -196,35 +196,20 @@ const styles = StyleSheet.create({
  
 
 const dataF = [{
-    "key": [
-        {
-            "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0", 
-            "location": "Columbus", 
-            "mission": "1 Day for the K.I.A.\u2019s purpose is to raise awareness and commemorate fallen military service members. 1 Day for the K.I.A. accomplishes our ...", 
-            "name": "1 Day For The K.I.A., Inc.", 
-            "service": "Community Service/Service Learning|Special Interest", 
-            "type": "Awareness/Activism"
-        }, 
-        {
-            "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=9c37c72e-3852-475c-8605-32f8594b5dbc&l=ALL&v=list&c=Columbus&page=0", 
-            "location": "Columbus", 
-            "mission": "To provide girls everywhere the opportunity to develop the skills and confidence they need to lead fulfilling lives and become successful le...", 
-            "name": "1girl", 
-            "service": "Community Service/Service Learning", 
-            "type": "Awareness/Activism"
-        }
-    ]
-}]
-
-const o =  dataF.map( ( {name, type, location, service, link} ) => {
-  //console.log(name)
-  //console.log(type)
-  //console.log(location)
-  //console.log(service)
-  //console.log(link)
-  console.log( <p key={name}>{name} - {type}</p>)
-
-})
+      "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=cef99280-7d97-4496-9396-900def432d97&l=ALL&v=list&c=Columbus&page=0",
+      "location": "Columbus",
+      "name": "1 Day For The K.I.A., Inc.",
+      "service": "Community Service/Service Learning|Special Interest",
+      "type": "Awareness/Activism"
+    },
+    {
+      "link": "https://activities.osu.edu/involvement/student_organizations/find_a_student_org?i=9c37c72e-3852-475c-8605-32f8594b5dbc&l=ALL&v=list&c=Columbus&page=0",
+      "location": "Columbus",
+      "name": "1girl",
+      "service": "Community Service/Service Learning",
+      "type": "Awareness/Activism"
+    }
+]
 
 //Dummy content to show
 //You can also use dynamic data by calling webservice
