@@ -2,12 +2,13 @@
 import React, { Component } from 'react';
 import IP from '../constants/ip.js';
 import { LayoutAnimation, Linking, StyleSheet, View, Text, ScrollView, Image, UIManager, TouchableOpacity, Platform,} from 'react-native';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 
 class ExpandableItemComponent extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       layoutHeight: 0,
       loading: false,
@@ -57,7 +58,7 @@ class ExpandableItemComponent extends Component {
           }}>
           {/*Content under the header of the Expandable List Item*/}
           
-          {this.props.item.missionCategory.map((item, key) => (
+          {this.item.missionCategory.map((item, key) => (
             <TouchableOpacity
               key={key}
               style={styles.content}
@@ -74,7 +75,7 @@ class ExpandableItemComponent extends Component {
               <View style={styles.separator} />
             </TouchableOpacity>
           ))}
-           {this.props.item.infoCategory.map((item, key) => (
+           {this.item.infoCategory.map((item, key) => (
             <TouchableOpacity
               key={key}
               style={styles.content}
@@ -97,12 +98,13 @@ class ExpandableItemComponent extends Component {
  
 export default class DisplayMatches extends Component {
   //Main View defined under this Class
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { listDataSource: CONTENT,
                     allMatches: [],
                     allClubs: [],
                     matchedClubs: [],
+                    username: this.props.navigation.getParam('username', () => {}),
                     isLoading: false
     };
   }
@@ -121,13 +123,9 @@ export default class DisplayMatches extends Component {
         this.setState({
           allClubs: responseJson.results 
         });
-
-        console.log("b");
       });
-      console.log("b");
     });
     this.setState({isLoading: false})
-    console.log("d");
 
   } 
   updateLayout = index => {
@@ -138,6 +136,7 @@ export default class DisplayMatches extends Component {
         ? (array[placeindex]['isExpanded'] = !array[placeindex]['isExpanded'])
         : (array[placeindex]['isExpanded'] = false)
     );
+    
     this.setState(() => {
       return {
         matchedClubs: array,
@@ -149,20 +148,23 @@ export default class DisplayMatches extends Component {
     if(this.state.isLoading) {
       return(<View><Text>Loading</Text></View>);
     }
+    var arr = [];
     for(let i = 0; i < this.state.allMatches.length; i++) {
-      var arr = []
       if(this.state.allMatches[i].username == "neelm88") {
-        for(let j = 0; j < this.state.allClubs; j++) {
-          if(this.state.allMatches[i].club_name == this.state.allClubs[j].name) {
+        for(let j = 0; j < this.state.allClubs.length; j++) {
+          console.log(this.state.allClubs.length);
+          if(this.state.allMatches[i].club_name.toString() == this.state.allClubs[j].name.toString()) {
             this.state.allClubs[j].isExpanded = false;
-            this.state.allClubs[j].missionCategory = []
+            this.state.allClubs[j].missionCategory= [{ id: 'Mission', val:this.state.allClubs[j].mission}];
+            this.state.allClubs[j].infoCategory =  [{ id: 'More Info', val:this.state.allClubs[j].link}];
             arr.push(this.state.allClubs[j]);
           }
         }
       }
     }
-    this.setState({matchedClubs: arr});
-
+    this.state.matchedClubs = arr;
+    console.log(this.state.matchedClubs[0]);
+    
     return (
       <View style={styles.container}>
         <View style={styles.mainHeader}>
@@ -170,11 +172,12 @@ export default class DisplayMatches extends Component {
         </View>
         <ScrollView>
           {this.state.matchedClubs.map((item, key) => (
-            <ExpandableItemComponent
-              key={item.clubName}
-              onClickFunction={this.updateLayout.bind(this, key)}
-              item={item}
-            />
+             <ExpandableItemComponent
+             key={item.name}
+             onClickFunction={this.updateLayout.bind(this, key)}
+             item={item}
+           />
+           
           ))}
         </ScrollView>
       </View>
