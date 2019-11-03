@@ -36,8 +36,6 @@ class ExpandableItemComponent extends Component {
  
 
   render() {
-     
-console.log(dataF[0]);
     return (
       <View>
         {/*Header of the Expandable List Item*/}
@@ -217,6 +215,16 @@ const dataF = [{
         }
     ]
 }]
+
+const o =  dataF.map( ( {name, type, location, service, link} ) => {
+  //console.log(name)
+  //console.log(type)
+  //console.log(location)
+  //console.log(service)
+  //console.log(link)
+  console.log( <p key={name}>{name} - {type}</p>)
+
+})
 
 //Dummy content to show
 //You can also use dynamic data by calling webservice
