@@ -17,19 +17,38 @@ function Separator() {
   return <View style={styles.separator} />;
 }
 
-export default class Alumni extends React.Component {
+export default class UserPreferences extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  school: '',
-                        first_name: '',
-                        last_name: '',
-                        date: '2019',
-                        gender: ''};
+        const text = this.props.navigation.getParam('username', () => {});
+        this.state = {  username: this.props.navigation.getParam('username', () => {}),
+                        password: this.props.navigation.getParam('password', () => {}),
+                        firstname: '',
+                        lastname: '',
+                        grad_year: '2019',
+                        gender: '',
+                        school: '',};
     }
   componentDidMount() {
  
   }
-
+  nextPage() {
+    fetch('http://172.20.10.6:8000/user_data/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state),
+    }).then((response) => response.json())
+        .then((responseJson) => {
+          return responseJson;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    this.props.navigation.navigate('Interests');
+  }
   render() {
   return (  
     <SafeAreaView style={styles.container}>
@@ -37,16 +56,16 @@ export default class Alumni extends React.Component {
             <TextInput
                 style={signin_style.input}
                 placeholder="First Name"
-                onChangeText={(first_name) => this.setState({first_name})}
-                value={this.state.first_name}
+                onChangeText={(firstname) => this.setState({firstname})}
+                value={this.state.firstname}
             />
             <TextInput
                 style={signin_style.input}
                 placeholder="Last Name"
-                onChangeText={(last_name) => this.setState({last_name})}
-                value={this.state.last_name}
+                onChangeText={(lastname) => this.setState({lastname})}
+                value={this.state.lastname}
             />
-            <Text>Gender: </Text>
+            <Text>Gender:</Text>
             <Picker
                 style={{height: 132}} itemStyle={{height: 132}}
                 placeholder="Gender"
@@ -75,10 +94,9 @@ export default class Alumni extends React.Component {
                 <Picker.Item label = "Other School" value = "Other School2" />
             </Picker>
             <DatePicker style={{width: 200}}
-                        date={this.state.date}
+                        date={this.state.grad_year}
                         mode="date"
                         format="YYYY"
-                        showIcon="true"
                         placeholder="Select Date"
                         minDate="1950"
                         maxDate="2050"
@@ -86,21 +104,18 @@ export default class Alumni extends React.Component {
                         cancelBtnText="Cancel"
                         customStyles={{
                             dateIcon: {
-                                position: 'absolute',
-                                left: 0,
-                                top: 4,
-                                marginLeft: 0
+                                display: 'none'
                             },
                             dateInput: {
                                 marginLeft: 36
                             }
                             }}
-                        onDateChange={(date) => {this.setState({date: date})}}/>
+                        onDateChange={(date) => {this.setState({grad_year: date})}}/>
             <Button
                 style={signin_style.buttons}
                 title="Next"
                 color="#f194ff"
-                onPress={() => {this.props.navigation.navigate('Interests')}}
+                onPress={() => {this.nextPage()}}
                 />            
         </ScrollView> 
     </SafeAreaView>

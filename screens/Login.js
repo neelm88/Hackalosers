@@ -49,7 +49,10 @@ export default class Login extends React.Component {
                 <Button
                     title="Sign Up"
                     color="black"
-                    onPress={() => {this.props.navigation.navigate('UserPreferences')}}
+                    onPress={() => {this.props.navigation.navigate('UserPreferences', {
+                        username: this.state.username,
+                        password: this.state.password 
+                    })}}
                 />
             </AnimatedBackgroundColorView>
         );
