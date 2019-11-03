@@ -1,2 +1,3 @@
 api/constants/ip.js
 .expo/
+.node_modules/

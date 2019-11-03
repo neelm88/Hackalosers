@@ -36,7 +36,7 @@ const items = [
   },{
     id: 'Technology',
     name: 'Technology',
-  },];
+  }];
 
 export default class Interests extends Component {
 
@@ -74,7 +74,7 @@ export default class Interests extends Component {
                     searchInputStyle={{ color: '#CCC' }}
                     submitButtonColor="#48d22b"
                     submitButtonText="Submit"
-                    
+                    fixedHeight = 'true'
                 />
       
 

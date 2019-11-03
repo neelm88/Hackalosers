@@ -37,6 +37,46 @@ class Loader extends React.Component{
     );
   }
 }
+const LoginStack = createStackNavigator({
+  Login: {
+      screen: Login,
+      navigationOptions : {header: null}
+  }
+});
+
+const InterestsStack = createStackNavigator({
+  Interests: {
+      screen: Interests,
+      navigationOptions : {header: null}
+  }
+});
+
+const UserPreferencesStack = createStackNavigator({
+  UserPreferences: {
+    screen: UserPreferences,
+    navigationOptions: {
+      header: null
+    }
+  }
+});
+
+const DisplayMatchesStack = createStackNavigator({
+  DisplayMatches: {
+    screen: DisplayMatches,
+    navigationOptions: {
+      header: null
+    }
+  }
+});
+
+const SwipeViewStack = createStackNavigator({
+  SwipeView: {
+    screen: SwipeView,
+    navigationOptions: {
+      header: null
+    }
+  }
+});
 
 const AppNavigator = createStackNavigator({
   Login: {
@@ -70,6 +110,15 @@ const AppNavigator = createStackNavigator({
       },
     }
 });
+
+const drawerConfig = () => ({
+  initialRouteName: 'Home',
+  drawerPosition: 'Left',
+  drawerOpenRoute: 'DrawerOpen',
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle'
+});
+
 
 
 export default createAppContainer(AppNavigator);
